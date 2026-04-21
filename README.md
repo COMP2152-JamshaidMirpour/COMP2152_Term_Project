@@ -7,7 +7,7 @@ COMP2152-JamshaidMirpour
 
 | Member | Vulnerability Found | Branch Name |
 |--------|-------------------|-------------|
-| Jamshaid Mirpour | Exposed API keys allow unauthorized token verification | jamshaid_backup_exposure |
+| Jamshaid Mirpour | Exposed API keys allow unauthorized token verification | jamshaid_api_key_verification |
 
 ## Videos
 
@@ -30,6 +30,7 @@ import time
 time.sleep(0.15)  # wait 150ms between requests
 
 ```
+
 ## Getting Started
 
 1. Look at the three example scripts:
