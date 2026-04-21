@@ -1,13 +1,13 @@
 # COMP2152 — Term Project: CTF Bug Bounty
 
 ## Team Name
-SOLO-CTF-Research
+COMP2152-JamshaidMirpour
 
 ## Team Members
 
 | Member | Vulnerability Found | Branch Name |
 |--------|-------------------|-------------|
-| Jamshaid Mirpour | Open directory listing exposes backup files and sensitive credentials | jamshaid_backup_exposure |
+| Jamshaid Mirpour | Exposed API keys allow unauthorized token verification | jamshaid_backup_exposure |
 
 ## Videos
 
@@ -29,4 +29,39 @@ The server allows **10 requests per second** per IP address. If you send request
 import time
 time.sleep(0.15)  # wait 150ms between requests
 
-Repository updated in organization fork.
+```
+## Getting Started
+
+1. Look at the three example scripts:
+   - `example_http_check.py` — checks if a site uses HTTPS (uses `urllib`)
+   - `example_port_check.py` — checks if a port is open (uses `socket`)
+   - `example_header_check.py` — reads HTTP response headers for info leaks (uses `urllib`)
+2. Run all examples: `python3 main.py`
+3. Create your own branch: `git checkout -b your_vuln_name`
+4. Write a Python script that finds and demonstrates a vulnerability
+5. Submit your finding at http://submit.0x10.cloud
+6. Merge your branch into master when done
+
+## Rules
+
+- **Python standard library only** — `socket`, `urllib`, `ssl`, `json`, `base64`, `time`. No pip packages.
+- **Only scan `*.0x10.cloud`** — do not scan any other domain.
+- **Respect the rate limit** — 10 requests/second max.
+
+## Final Finding
+
+- **Vulnerability:** Exposed API keys allow unauthorized token verification
+- **Subdomain:** `api.0x10.cloud`
+- **Summary:** The `/users` endpoint exposed API keys for different users without authentication. Those leaked keys were then accepted as Bearer tokens by `/auth/verify`, which returned `{"message":"Token accepted","valid":true}`.
+- **Status:** Resubmitted through `submit.0x10.cloud` and awaiting review
+
+## Repository Files
+
+- `main.py`
+- `example_http_check.py`
+- `example_port_check.py`
+- `example_header_check.py`
+- `verify_auth_key.py`
+- `README.md`
+- `.gitignore`
+- `AI Usage Declaration - Jamshaid Mirpour.docx`
