@@ -31,9 +31,8 @@ SOLO-CTF-Research
 - `.gitignore`
 
 ## Videos
-- Video 1: paste your YouTube link here
-- Video 2: paste your YouTube link here
-- Video 3: paste your YouTube link here
+- Video 1: https://youtu.be/yf6GgpB-3t4
+
 
 ## How to Run
 
