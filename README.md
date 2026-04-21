@@ -8,13 +8,13 @@ SOLO-CTF-Research
 
 | Member | Vulnerability | Branch |
 |--------|--------------|--------|
-| Jamshaid Mirpour | Insecure HTTP on api.0x10.cloud | jamshaid_insecure_http |
+| Jamshaid Mirpour | Open directory listing exposes backup files and sensitive credentials | jamshaid_backup_exposure |
 | Jamshaid Mirpour | Server Header Disclosure on api.0x10.cloud | jamshaid_header_disclosure |
 | Jamshaid Mirpour | Insecure Service Port Exposure on telnet.0x10.cloud | jamshaid_insecure_service |
 
 ## Vulnerability Summaries
-1. **Insecure HTTP on `api.0x10.cloud`** 
-   The target responds over plain HTTP and does not force HTTPS. This is a security risk because traffic could be intercepted in cleartext.
+1. **Open directory listing exposes backup files and sensitive credentials** 
+   The backup.0x10.cloud server exposed backup files including .env.backup and db_backup.sql. Accessing those files revealed secrets, credentials, and a SQL dump containing user data and a plaintext password.
 
 2. **Server Header Disclosure on `api.0x10.cloud`**  
    The target exposes its `Server` header as `cloudflare`. This reveals implementation details that can help attackers profile the service.
