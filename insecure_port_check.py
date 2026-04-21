@@ -21,7 +21,7 @@ def validate_target(host: str) -> None:
     if host in BLOCKED_SUBDOMAINS:
         raise ValueError("This subdomain is explicitly excluded from scanning.")
 
-
+# Verified finding target for insecure port check
 TARGET = "telnet.0x10.cloud"
 PORTS_TO_CHECK = {
     2323: "Telnet",
