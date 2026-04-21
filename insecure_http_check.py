@@ -22,7 +22,7 @@ def validate_target(host: str) -> None:
     if host in BLOCKED_SUBDOMAINS:
         raise ValueError("This subdomain is explicitly excluded from scanning.")
 
-
+# Verified finding target for insecure HTTP
 TARGET = "api.0x10.cloud"
 
 def check_http(target: str) -> None:
