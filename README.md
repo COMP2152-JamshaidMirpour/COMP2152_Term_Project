@@ -1,58 +1,30 @@
-# COMP2152 Term Project
+# COMP2152 — Term Project: CTF Bug Bounty
 
 ## Team Name
 SOLO-CTF-Research
 
 ## Team Members
-> This repository is completed by one student.
 
-| Member | Vulnerability | Branch |
-|--------|--------------|--------|
+| Member | Vulnerability Found | Branch Name |
+|--------|-------------------|-------------|
 | Jamshaid Mirpour | Open directory listing exposes backup files and sensitive credentials | jamshaid_backup_exposure |
-| Jamshaid Mirpour | Server Header Disclosure on api.0x10.cloud | jamshaid_header_disclosure |
-| Jamshaid Mirpour | Insecure Service Port Exposure on telnet.0x10.cloud | jamshaid_insecure_service |
-
-## Vulnerability Summaries
-1. **Open directory listing exposes backup files and sensitive credentials** 
-   The backup.0x10.cloud server exposed backup files including .env.backup and db_backup.sql. Accessing those files revealed secrets, credentials, and a SQL dump containing user data and a plaintext password.
-
-2. **Server Header Disclosure on `api.0x10.cloud`**  
-   The target exposes its `Server` header as `cloudflare`. This reveals implementation details that can help attackers profile the service.
-
-3. **Insecure Service Port Exposure on `telnet.0x10.cloud`**  
-      The target has multiple risky service ports open, including 2323, 2121, 2525, and 6379. Open services can increase attack surface and may expose sensitive data or insecure protocols.
-
-
-## Repository Files
-- `insecure_http_check.py`
-- `header_disclosure_check.py`
-- `insecure_port_check.py`
-- `README.md`
-- `.gitignore`
 
 ## Videos
-- Video 1: https://youtu.be/yf6GgpB-3t4
 
+Each team member records a short video (max 3 minutes) explaining their vulnerability. Add your YouTube links below:
 
-## How to Run
+- Jamshaid Mirpour: https://youtu.be/yf6GgpB-3t4
 
-### 1) Insecure HTTP check
-```bash
-python3 insecure_http_check.py
-```
+## Target
 
-### 2) Header disclosure check
-```bash
-python3 header_disclosure_check.py
-```
+- Server: `0x10.cloud` and its subdomains
+- Submission: http://submit.0x10.cloud
+- Leaderboard: http://ranking.0x10.cloud
 
-### 3) Insecure service port check
-```bash
-python3 insecure_port_check.py
-```
+## Important: Rate Limit
 
-## Notes
-- Only scan **subdomains of 0x10.cloud**.
-- Do **not** scan `submit.0x10.cloud` or `ranking.0x10.cloud`.
-- Keep your scripts and commit history clean.
+The server allows **10 requests per second** per IP address. If you send requests too fast, you will get blocked (HTTP 429). Add a small delay between requests:
 
+```python
+import time
+time.sleep(0.15)  # wait 150ms between requests
